@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck00e37siv25"]
+
+[ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_ypl0d"]
+[ext_resource type="SpriteFrames" uid="uid://cddheqsxe6smk" path="res://Animations/pig_frames.tres" id="2_1yolw"]
+[ext_resource type="Script" path="res://Scripts/walk_animator.gd" id="3_jixnt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6s4v2"]
+radius = 5.0
+
+[node name="base_enemy" type="Sprite2D"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+script = ExtResource("1_ypl0d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_1yolw")
+animation = &"walk_west"
+frame_progress = 0.746569
+script = ExtResource("3_jixnt")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6s4v2")

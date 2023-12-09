@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwh8aka0xuojq"]
+
+[ext_resource type="Texture2D" uid="uid://dplq56737na4k" path="res://miniworld/Animals/Pig.png" id="1_rf3ch"]
+
+[node name="EnemyPreview" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_rf3ch")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

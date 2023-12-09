@@ -1,0 +1,18 @@
+[
+	{
+		"enemy_location":"res://Enemies/pig.tscn",
+		"hit_points":3,
+		"speed":0.1,
+		"armor":1,
+		"value":1,
+		"enemy_id":0
+	},
+	{
+		"enemy_location":"res://Enemies/cow.tscn",
+		"hit_points":5,
+		"speed":0.07,
+		"armor":3,
+		"value":2,
+		"enemy_id":1
+	}
+]

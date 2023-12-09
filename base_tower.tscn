@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://15sgn88pfue5"]
+
+[ext_resource type="Texture2D" uid="uid://0mtyu6bsel6s" path="res://miniworld/Nature/Trees.png" id="1_5emw1"]
+[ext_resource type="Script" path="res://Scripts/base_tower.gd" id="1_to6w8"]
+[ext_resource type="Texture2D" uid="uid://dfcsuk5x6ixwi" path="res://PNG/Balls/Blue/ballBlue_04.png" id="3_m4jjx"]
+[ext_resource type="PackedScene" uid="uid://cqkbdsndcjebq" path="res://Bullets/light_blast.tscn" id="3_snc5w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bquxa"]
+radius = 65.0
+
+[node name="base_tower" type="Sprite2D"]
+z_index = 5
+texture = ExtResource("1_5emw1")
+offset = Vector2(0, -3)
+region_enabled = true
+region_rect = Rect2(47, 0, 16, 16)
+script = ExtResource("1_to6w8")
+bulletType = ExtResource("3_snc5w")
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bquxa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+modulate = Color(0.376471, 1, 1, 0.27451)
+z_index = -2
+texture = ExtResource("3_m4jjx")

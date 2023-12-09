@@ -1,0 +1,52 @@
+[
+	{
+		"level_name":"Pig Pen",
+		"file_name":"res://Levels/pig_pen.tscn",
+		"level_id":0,
+		"level_icon":{
+				"icon":"res://miniworld/Animals/Pig.png",
+				"x":0,
+				"y":0,
+				"width":16,
+				"height":16
+		},
+		"enemies":[
+			{
+				"icon":"res://miniworld/Animals/Pig.png",
+				"x":0,
+				"y":0,
+				"width":16,
+				"height":16
+			}
+		]
+	},
+	{
+		"level_name":"Cow Pen",
+		"file_name":"res://Levels/cow_pen.tscn",
+		"level_id":1,
+		"level_icon":{
+				"icon":"res://miniworld/Animals/Cow.png",
+				"x":0,
+				"y":0,
+				"width":16,
+				"height":16
+		},
+		"enemies":[
+			{
+				"icon":"res://miniworld/Animals/Pig.png",
+				"x":0,
+				"y":0,
+				"width":16,
+				"height":16
+			},
+			{
+				"icon":"res://miniworld/Animals/Cow.png",
+				"x":0,
+				"y":0,
+				"width":16,
+				"height":16
+			}
+		]
+	}
+	
+]

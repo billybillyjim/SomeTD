@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cul654ll6yrl4"]
+
+[ext_resource type="Texture2D" uid="uid://dfyiuluonfwt4" path="res://PNG/Tiles blue/tileBlue_49.png" id="1_1wk45"]
+
+[node name="selection_square" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.501961)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_1wk45")

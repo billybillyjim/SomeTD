@@ -1,0 +1,48 @@
+[
+	{
+		"level_name":"Pig Pen",
+		"waves":[
+			{
+				"amount":10,
+				"enemy_name":"Pig",
+				"enemy_id":0,
+				"spawn_speed":0.5
+			},
+			{
+				"amount":20,
+				"enemy_name":"Pig",
+				"enemy_id":0,
+				"spawn_speed":0.5
+			},
+			{
+				"amount":30,
+				"enemy_name":"Cow",
+				"enemy_id":1,
+				"spawn_speed":0.5
+			}
+		]
+	},
+		{
+		"level_name":"Cow Pen",
+		"waves":[
+			{
+				"amount":10,
+				"enemy_name":"Cow",
+				"enemy_id":1,
+				"spawn_speed":0.5
+			},
+			{
+				"amount":20,
+				"enemy_name":"Pig",
+				"enemy_id":0,
+				"spawn_speed":0.5
+			},
+			{
+				"amount":30,
+				"enemy_name":"Cow",
+				"enemy_id":1,
+				"spawn_speed":0.5
+			}
+		]
+	}
+]

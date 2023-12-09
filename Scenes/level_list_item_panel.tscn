@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://da3ol23b6xq2s"]
+
+[ext_resource type="Script" path="res://LevelListItemPanel.gd" id="1_6ont5"]
+[ext_resource type="Texture2D" uid="uid://dplq56737na4k" path="res://miniworld/Animals/Pig.png" id="2_pb8uh"]
+[ext_resource type="PackedScene" uid="uid://cwh8aka0xuojq" path="res://Scenes/enemy_preview_cell.tscn" id="3_qpuc7"]
+
+[node name="LevelListItemPanel" type="Panel"]
+custom_minimum_size = Vector2(0, 150)
+script = ExtResource("1_6ont5")
+enemy_preview_cell = ExtResource("3_qpuc7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelIcon" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LevelIcon"]
+position = Vector2(64, 64)
+scale = Vector2(8, 8)
+texture = ExtResource("2_pb8uh")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Spacer4" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="LevelName" type="Label" parent="HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Pig Pen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyDescription" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Enemies:"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/EnemyDescription"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 16
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/EnemyDescription/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
+columns = 10
+
+[node name="Spacer2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnterButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "Enter"
+
+[node name="Spacer3" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2

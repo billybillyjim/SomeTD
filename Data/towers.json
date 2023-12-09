@@ -1,0 +1,76 @@
+[
+	{
+		"name":"Swordsman",
+		"title":"Swordsman",
+		"is_base_tower":true,
+		"base_max_shots":1,
+		"base_fire_speed":0.3,
+		"base_range":0.5,
+		"bullet_type_name":"sword",
+		"base_cost":10,
+		"attack_type":"Sword",
+		"upgrades":[
+		],
+		"texture_location":{
+			"x":0,
+			"y":0,
+			"file_name":"res://Towers/SwordsmanCyan.png"
+		}
+	},
+	{
+		"name":"Light Mage",
+		"title":"Light Mage",
+		"is_base_tower":true,
+		"base_max_shots":5,
+		"base_fire_speed":0.2,
+		"base_range":0.8,
+		"bullet_type_name":"light_blast",
+		"attack_type":"Magic",
+		"base_cost":10,
+		"upgrades":[
+			{
+				"tower_name":"Day Mage"
+			},
+			{
+				"tower_name":"Moon Mage"
+			}
+		],
+		"texture_location":{
+			"x":0,
+			"y":0,
+			"file_name":"res://Towers/MageCyan.png"
+		}
+	},
+	{
+		"name":"Day Mage",
+		"title":"Day Mage",
+		"is_base_tower":false,
+		"base_max_shots":5,
+		"base_fire_speed":0.2,
+		"base_range":0.8,
+		"bullet_type_name":"light_blast",
+		"attack_type":"Magic",
+		"base_cost":20,
+		"texture_location":{
+			"x":0,
+			"y":0,
+			"file_name":"res://Towers/MageRed.png"
+		}
+	},
+	{
+		"name":"Moon Mage",
+		"title":"Moon Mage",
+		"is_base_tower":false,
+		"base_max_shots":5,
+		"base_fire_speed":0.2,
+		"base_range":0.8,
+		"bullet_type_name":"light_blast",
+		"attack_type":"Magic",
+		"base_cost":10,
+		"texture_location":{
+			"x":0,
+			"y":0,
+			"file_name":"res://Towers/MagePurple.png"
+		}
+	}
+]

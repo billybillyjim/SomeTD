@@ -1,0 +1,874 @@
+[gd_scene load_steps=27 format=3 uid="uid://u8fel1l7dv1n"]
+
+[ext_resource type="Script" path="res://Scripts/TowerUIManager.gd" id="1_vvkvt"]
+[ext_resource type="Texture2D" uid="uid://i32wmxi16o64" path="res://Towers/MageCyan.png" id="2_fvwja"]
+[ext_resource type="Script" path="res://TowerPanel.gd" id="2_h7q2l"]
+[ext_resource type="PackedScene" uid="uid://cwnkwsnkwolge" path="res://Scenes/tower_button.tscn" id="3_5xx2r"]
+[ext_resource type="Texture2D" uid="uid://dxn032g46mvos" path="res://UI/ProgressBar_01/BarV1_Bar.png" id="3_uyyjk"]
+[ext_resource type="Texture2D" uid="uid://beu7qksjgcccw" path="res://UI/ProgressBar_01/BarV1_ProgressBar.png" id="4_3yrs7"]
+[ext_resource type="Script" path="res://Scripts/tower_info_panel.gd" id="4_sc61a"]
+[ext_resource type="Script" path="res://Scripts/progress_percent_label.gd" id="5_wf4s2"]
+[ext_resource type="PackedScene" uid="uid://drb8w7dll0fo0" path="res://upgrade_button.tscn" id="8_4q1im"]
+[ext_resource type="Script" path="res://Scripts/SellTowerButton.gd" id="8_81k2c"]
+[ext_resource type="Texture2D" uid="uid://dqh3gr1kttudp" path="res://Towers/MageRed.png" id="8_m4d35"]
+[ext_resource type="Texture2D" uid="uid://b7q2xdidwc7up" path="res://PNG/Coins/coin_11.png" id="11_gu665"]
+[ext_resource type="Texture2D" uid="uid://bkgb21w6rutst" path="res://PNG/Tiles red/tileRed_48.png" id="12_0vk6p"]
+[ext_resource type="Script" path="res://MapSettingsPanel.gd" id="12_1x6ao"]
+[ext_resource type="Script" path="res://Scripts/GoldText.gd" id="12_5bnrm"]
+[ext_resource type="Script" path="res://MainMenuPanel.gd" id="15_pi1gd"]
+[ext_resource type="Script" path="res://LevelMenu.gd" id="16_gar1u"]
+[ext_resource type="Texture2D" uid="uid://da2ddl0xitx0d" path="res://miniworld/User Interface/UiIcons2.png" id="18_x1nlu"]
+[ext_resource type="Script" path="res://TimeControlPanel.gd" id="18_ximqk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_74sve"]
+font_size = 46
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5capu"]
+atlas = ExtResource("2_fvwja")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rco0"]
+atlas = ExtResource("8_m4d35")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_473aj"]
+atlas = ExtResource("18_x1nlu")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgmt4"]
+atlas = ExtResource("18_x1nlu")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqhsv"]
+atlas = ExtResource("18_x1nlu")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ob17"]
+atlas = ExtResource("18_x1nlu")
+region = Rect2(48, 48, 16, 16)
+
+[node name="Main" type="Node2D"]
+y_sort_enabled = true
+
+[node name="MainUI" type="CanvasLayer" parent="."]
+script = ExtResource("1_vvkvt")
+
+[node name="EndGamePanel" type="Panel" parent="MainUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/EndGamePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 400
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/EndGamePanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="Label" type="Label" parent="MainUI/EndGamePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="MainUI/EndGamePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/EndGamePanel/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="MainUI/EndGamePanel/MarginContainer/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Gold Earned:"
+
+[node name="Label2" type="Label" parent="MainUI/EndGamePanel/MarginContainer/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "EXP Earned:"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/EndGamePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+
+[node name="Button" type="Button" parent="MainUI/EndGamePanel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "End Game"
+
+[node name="TowerPanel" type="HBoxContainer" parent="MainUI"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("2_h7q2l")
+
+[node name="Panel" type="Panel" parent="MainUI/TowerPanel"]
+custom_minimum_size = Vector2(480, 1080)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainUI/TowerPanel/Panel"]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 74.0
+text = "Units"
+label_settings = SubResource("LabelSettings_74sve")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TowerPanel/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -223.5
+offset_top = -584.0
+offset_right = 223.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="GridContainer" type="GridContainer" parent="MainUI/TowerPanel/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="TowerButton" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer" instance=ExtResource("3_5xx2r")]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_5capu")
+
+[node name="Button3" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="Button6" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="Button7" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="Button8" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="Button9" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="Button10" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="Button11" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="Button12" type="Button" parent="MainUI/TowerPanel/Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="TowerInfoPanel" type="HBoxContainer" parent="MainUI"]
+visible = false
+offset_left = 1440.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("4_sc61a")
+
+[node name="Panel" type="Panel" parent="MainUI/TowerInfoPanel"]
+custom_minimum_size = Vector2(480, 1080)
+layout_mode = 2
+
+[node name="TowerInfoLabel" type="Label" parent="MainUI/TowerInfoPanel/Panel"]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 74.0
+text = "Tower Info"
+label_settings = SubResource("LabelSettings_74sve")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TowerInfoPanel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="EXPPanel" type="Panel" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/EXPPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Parent" type="Node2D" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/EXPPanel/VBox"]
+scale = Vector2(1.655, 1.655)
+
+[node name="EXPProgressLabel" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/EXPPanel/VBox/Parent"]
+z_index = 1
+offset_top = -2.0
+offset_right = 271.0
+offset_bottom = 24.0
+text = "100%"
+horizontal_alignment = 1
+script = ExtResource("5_wf4s2")
+
+[node name="EXPProgress" type="TextureProgressBar" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/EXPPanel/VBox/Parent"]
+offset_right = 272.0
+offset_bottom = 21.0
+scale = Vector2(1, 0.999688)
+size_flags_vertical = 8
+value = 100.0
+texture_under = ExtResource("3_uyyjk")
+texture_progress = ExtResource("4_3yrs7")
+
+[node name="LevelLabel" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/EXPPanel"]
+layout_mode = 0
+offset_right = 450.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 32
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsPanel" type="Panel" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FireSpeedPanel" type="Panel" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/FireSpeedPanel"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 450.0
+offset_bottom = 35.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/FireSpeedPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Fire Speed Label" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/FireSpeedPanel/MarginContainer/HSplitContainer"]
+layout_mode = 2
+text = "Fire Speed"
+
+[node name="Fire Speed Value" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/FireSpeedPanel/MarginContainer/HSplitContainer"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="MaxShotsPanel" type="Panel" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 450.0
+offset_bottom = 35.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Max Shots Label" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel/MarginContainer/HSplitContainer"]
+layout_mode = 2
+text = "Max Shots"
+
+[node name="Max Shots Value" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel/MarginContainer/HSplitContainer"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="MaxShotsPanel2" type="Panel" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel2"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 450.0
+offset_bottom = 35.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel2/MarginContainer"]
+layout_mode = 2
+
+[node name="Range Label" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel2/MarginContainer/HSplitContainer"]
+layout_mode = 2
+text = "Range"
+
+[node name="Range Value" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel2/MarginContainer/HSplitContainer"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="MaxShotsPanel3" type="Panel" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel3"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 450.0
+offset_bottom = 35.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel3/MarginContainer"]
+layout_mode = 2
+
+[node name="Damage Label" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel3/MarginContainer/HSplitContainer"]
+layout_mode = 2
+text = "Damage"
+
+[node name="Damage Value" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel3/MarginContainer/HSplitContainer"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="MaxShotsPanel4" type="Panel" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel4"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 450.0
+offset_bottom = 35.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel4/MarginContainer"]
+layout_mode = 2
+
+[node name="Attack Style Label" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel4/MarginContainer/HSplitContainer"]
+layout_mode = 2
+text = "Attack Style"
+
+[node name="Attack Style Value" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/StatsPanel/VBoxContainer/MaxShotsPanel4/MarginContainer/HSplitContainer"]
+layout_mode = 2
+text = "Sword"
+horizontal_alignment = 2
+
+[node name="UpgradesPanel" type="Panel" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.1
+offset_bottom = -0.200001
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 2
+
+[node name="Label" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellButton" type="Button" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+tooltip_text = "Sell the tower"
+theme_override_font_sizes/font_size = 24
+text = "Sell"
+script = ExtResource("8_81k2c")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 60
+
+[node name="Upgrades" type="Panel" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Upgrades"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 5
+columns = 4
+
+[node name="UpgradeButton" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Upgrades/GridContainer" instance=ExtResource("8_4q1im")]
+layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Upgrades/GridContainer"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_5rco0")
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Upgrades/GridContainer"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_5rco0")
+stretch_mode = 0
+
+[node name="Sell" type="Panel" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Sell"]
+layout_mode = 2
+offset_left = 1.0
+offset_right = 451.0
+theme_override_constants/margin_top = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Sell/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Sell/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Confirm sell for $1?"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Sell/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 125
+theme_override_constants/margin_right = 125
+
+[node name="Button" type="Button" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Sell/MarginContainer3/VBoxContainer/MarginContainer"]
+layout_mode = 2
+tooltip_text = "Confirm your sale"
+text = "Confirm"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Sell/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 125
+theme_override_constants/margin_right = 125
+
+[node name="Button2" type="Button" parent="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/MarginContainer/Sell/MarginContainer3/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="MapSettingsPanel" type="Panel" parent="MainUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_1x6ao")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/MapSettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 700
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 700
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/MapSettingsPanel/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="QuitButton" type="Button" parent="MainUI/MapSettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Quit Map"
+
+[node name="Label" type="Label" parent="MainUI/MapSettingsPanel/MarginContainer/VBoxContainer/QuitButton"]
+layout_mode = 2
+offset_top = 100.0
+offset_right = 520.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 18
+text = "You will retain all your rewards and leave the map early."
+horizontal_alignment = 1
+
+[node name="ResetButton" type="Button" parent="MainUI/MapSettingsPanel/MarginContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Restart Map"
+
+[node name="Label" type="Label" parent="MainUI/MapSettingsPanel/MarginContainer/VBoxContainer/ResetButton"]
+layout_mode = 2
+offset_top = 100.0
+offset_right = 520.0
+offset_bottom = 126.0
+text = "You will lose your rewards and start the map over again."
+horizontal_alignment = 1
+
+[node name="CurrencyPanel" type="Panel" parent="MainUI"]
+visible = false
+anchors_preset = -1
+anchor_right = 0.75
+anchor_bottom = 0.075
+offset_right = 1.91992
+offset_bottom = 10.36
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/CurrencyPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0800781
+offset_bottom = -1.35999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/CurrencyPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Menu"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="GoldPanel" type="Panel" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer/GoldPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer/GoldPanel/MarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("11_gu665")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer/GoldPanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 32
+text = "1"
+script = ExtResource("12_5bnrm")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="LivesPanel" type="Panel" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer3/LivesPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer3/LivesPanel/MarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("12_0vk6p")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer3/LivesPanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="WavePanel" type="Panel" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer2/WavePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer2/WavePanel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Wave"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer2/WavePanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 96
+
+[node name="Label" type="Label" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer2/WavePanel/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="Label3" type="Label" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer2/WavePanel/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "/"
+
+[node name="Label2" type="Label" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MarginContainer2/WavePanel/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="MainMenuPanel" type="Panel" parent="MainUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_pi1gd")
+
+[node name="MainMenu" type="Control" parent="MainUI/MainMenuPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/MainMenuPanel/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/MainMenuPanel/MainMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="LevelSelectButton" type="Button" parent="MainUI/MainMenuPanel/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level Select"
+
+[node name="LevelMenu" type="Control" parent="MainUI/MainMenuPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_gar1u")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/MainMenuPanel/LevelMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 400
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/MainMenuPanel/LevelMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="TimeControlPanel" type="Control" parent="MainUI"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -212.0
+offset_right = 500.0
+grow_vertical = 0
+script = ExtResource("18_ximqk")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TimeControlPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/TimeControlPanel/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = 124
+
+[node name="Control" type="Control" parent="MainUI/TimeControlPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Play" type="TextureButton" parent="MainUI/TimeControlPanel/MarginContainer/HBoxContainer/Control"]
+layout_mode = 2
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(8, 8)
+texture_normal = SubResource("AtlasTexture_473aj")
+
+[node name="Control2" type="Control" parent="MainUI/TimeControlPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Double" type="TextureButton" parent="MainUI/TimeControlPanel/MarginContainer/HBoxContainer/Control2"]
+layout_mode = 2
+offset_left = 4.0
+offset_right = 20.0
+offset_bottom = 300.0
+scale = Vector2(8, 8)
+texture_normal = SubResource("AtlasTexture_wgmt4")
+
+[node name="Control3" type="Control" parent="MainUI/TimeControlPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Triple" type="TextureButton" parent="MainUI/TimeControlPanel/MarginContainer/HBoxContainer/Control3"]
+layout_mode = 2
+offset_left = 4.0
+offset_right = 20.0
+offset_bottom = 300.0
+scale = Vector2(8, 8)
+texture_normal = SubResource("AtlasTexture_vqhsv")
+
+[node name="Control4" type="Control" parent="MainUI/TimeControlPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Quintuple" type="TextureButton" parent="MainUI/TimeControlPanel/MarginContainer/HBoxContainer/Control4"]
+layout_mode = 2
+offset_left = 4.0
+offset_right = 20.0
+offset_bottom = 300.0
+scale = Vector2(8, 8)
+texture_normal = SubResource("AtlasTexture_4ob17")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, 50)
+zoom = Vector2(4, 4)
+
+[node name="MapParent" type="Node2D" parent="."]
+
+[connection signal="pressed" from="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/HBoxContainer/SellButton" to="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/HBoxContainer/SellButton" method="_on_pressed"]
+[connection signal="pressed" from="MainUI/MapSettingsPanel/MarginContainer/VBoxContainer/QuitButton" to="MainUI/MapSettingsPanel" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainUI/MapSettingsPanel/MarginContainer/VBoxContainer/ResetButton" to="MainUI/MapSettingsPanel" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="MainUI/CurrencyPanel/MarginContainer/HBoxContainer/MenuButton" to="MainUI/MapSettingsPanel" method="toggle_panel"]
+[connection signal="pressed" from="MainUI/MainMenuPanel/MainMenu/MarginContainer/VBoxContainer/LevelSelectButton" to="MainUI/MainMenuPanel" method="show_level_menu"]
+[connection signal="pressed" from="MainUI/TimeControlPanel/MarginContainer/HBoxContainer/Control/Play" to="MainUI/TimeControlPanel" method="_on_texture_button_pressed" binds= [1]]
+[connection signal="pressed" from="MainUI/TimeControlPanel/MarginContainer/HBoxContainer/Control2/Double" to="MainUI/TimeControlPanel" method="_on_texture_button_pressed" binds= [2]]
+[connection signal="pressed" from="MainUI/TimeControlPanel/MarginContainer/HBoxContainer/Control3/Triple" to="MainUI/TimeControlPanel" method="_on_texture_button_pressed" binds= [3]]
+[connection signal="pressed" from="MainUI/TimeControlPanel/MarginContainer/HBoxContainer/Control4/Quintuple" to="MainUI/TimeControlPanel" method="_on_texture_button_pressed" binds= [5]]
