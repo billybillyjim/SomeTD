@@ -40,7 +40,13 @@ func _process(delta):
 		if self.position.is_equal_approx(path[0]):
 			path.remove_at(0)
 	else:
+		take_player_life()
 		self.queue_free()
-
+		
+func take_player_life():
+	CurrencyManager.remove_lives(1)
+	if CurrencyManager.current_lives <= 0:
+		LevelManager.end_level()
+	
 func take_damage(amount):
 	hitpoints -= amount

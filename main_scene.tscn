@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://u8fel1l7dv1n"]
+[gd_scene load_steps=28 format=3 uid="uid://u8fel1l7dv1n"]
 
 [ext_resource type="Script" path="res://Scripts/TowerUIManager.gd" id="1_vvkvt"]
 [ext_resource type="Texture2D" uid="uid://i32wmxi16o64" path="res://Towers/MageCyan.png" id="2_fvwja"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Scripts/GoldText.gd" id="12_5bnrm"]
 [ext_resource type="Script" path="res://MainMenuPanel.gd" id="15_pi1gd"]
 [ext_resource type="Script" path="res://LevelMenu.gd" id="16_gar1u"]
+[ext_resource type="Script" path="res://LifeText.gd" id="16_yx0yr"]
 [ext_resource type="Texture2D" uid="uid://da2ddl0xitx0d" path="res://miniworld/User Interface/UiIcons2.png" id="18_x1nlu"]
 [ext_resource type="Script" path="res://TimeControlPanel.gd" id="18_ximqk"]
 
@@ -595,7 +596,6 @@ text = "You will lose your rewards and start the map over again."
 horizontal_alignment = 1
 
 [node name="CurrencyPanel" type="Panel" parent="MainUI"]
-visible = false
 anchors_preset = -1
 anchor_right = 0.75
 anchor_bottom = 0.075
@@ -688,6 +688,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 32
 text = "1"
+script = ExtResource("16_yx0yr")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MainUI/CurrencyPanel/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -791,6 +792,7 @@ theme_override_constants/margin_right = 400
 layout_mode = 2
 
 [node name="TimeControlPanel" type="Control" parent="MainUI"]
+visible = false
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 3
 anchors_preset = 2
@@ -863,6 +865,7 @@ zoom = Vector2(4, 4)
 
 [node name="MapParent" type="Node2D" parent="."]
 
+[connection signal="pressed" from="MainUI/EndGamePanel/MarginContainer/VBoxContainer/MarginContainer/Button" to="MainUI/MapSettingsPanel" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/HBoxContainer/SellButton" to="MainUI/TowerInfoPanel/Panel/MarginContainer/VBoxContainer/UpgradesPanel/HBoxContainer/SellButton" method="_on_pressed"]
 [connection signal="pressed" from="MainUI/MapSettingsPanel/MarginContainer/VBoxContainer/QuitButton" to="MainUI/MapSettingsPanel" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MainUI/MapSettingsPanel/MarginContainer/VBoxContainer/ResetButton" to="MainUI/MapSettingsPanel" method="_on_reset_button_pressed"]
